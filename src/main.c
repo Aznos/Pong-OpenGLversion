@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     while(!bQuit) {
         if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
-            if(msg.message = WM_QUIT) {
+            if(msg.message == WM_QUIT) {
                 bQuit = TRUE;
             } else {
                 TranslateMessage(&msg);
