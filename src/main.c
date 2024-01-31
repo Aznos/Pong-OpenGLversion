@@ -66,3 +66,24 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 
     return 0;
 }
+
+void EnableOpenGL(HWND hwnd, HDC* hdc, HGLRC* hrc) {
+    PIXELFORMATDESCRIPTOR pfd;
+    int iFormat;
+
+    *hdc = GetDC(hwnd);
+
+    ZeroMemory(&pfd, sizeof(pfd));
+    pfd.nSize = sizeof(pfd);
+    pfd.nVersion = 1;
+    pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+    pfd.iPixelType = PFD_TYPE_RGBA;
+    pfd.cColorBits = 24;
+    pfd.cDepthBits = 16;
+    pfd.iLayerType = PFD_MAIN_PLANE;
+    iFormat = ChoosePixelFormat(*hdc, &pfd);
+    SetPixelFormat(*hdc, iFormat, &pfd);
+
+    *hrc = wglCreateContext(*hdc);
+    wglMakeCurrent(*hdc, *hrc);
+}
