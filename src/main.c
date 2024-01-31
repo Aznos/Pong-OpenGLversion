@@ -35,4 +35,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     );
 
     EnableOpenGL(hwnd, &hdc, &hrc);
+
+    while(!bQuit) {
+        if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+            if(msg.message = WM_QUIT) {
+                bQuit = TRUE;
+            } else {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        } else {
+            SwapBuffers(hdc);
+        }
+    }
 }
