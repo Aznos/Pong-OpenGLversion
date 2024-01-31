@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <GL/gl.h>
+#include <math.h>
 
 LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 
@@ -63,9 +64,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            RECT rect;
+            GetClientRect(hwnd, &rect);
+            float aspectRatio = (float)(rect.right - rect.left) / (float)(rect.bottom - rect.top);
+
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
-            glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+            if(aspectRatio > 1.0f) {
+                glOrtho(-1.0 * aspectRatio, 1.0 * aspectRatio, -1.0, 1.0, -1.0, 1.0);
+            } else {
+                glOrtho(-1.0, 1.0, -1.0 / aspectRatio, 1.0 / aspectRatio, -1.0, 1.0);
+            }
 
             glBegin(GL_QUADS);
                 glColor3f(1.0f, 1.0f, 1.0f);
@@ -82,6 +91,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 glVertex2f(0.92f, -0.2f);
                 glVertex2f(0.88f, -0.2f);
             glEnd();
+
+            drawCircle(0.0f, 0.0f, 0.05f, 32);
 
             SwapBuffers(hdc);
         }
