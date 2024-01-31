@@ -48,4 +48,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             SwapBuffers(hdc);
         }
     }
+
+    DisableOpenGL(hwnd, hdc, hrc);
+    DestroyWindow(hwnd);
+    return msg.wParam;
 }
