@@ -26,4 +26,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.lpszMenuName = NULL;
     wc.lpszClassName = "GLSample";
     RegisterClass(&wc);
+
+    hwnd = CreateWindow(
+        "GLSample", "Pong",
+        WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
+        0, 0, 1080, 720,
+        NULL, NULL, hInstance, NULL
+    );
+
+    EnableOpenGL(hwnd, &hdc, &hrc);
 }
