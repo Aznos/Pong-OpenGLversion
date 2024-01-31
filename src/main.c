@@ -30,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     hwnd = CreateWindow(
         "GLSample", "Pong",
         WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-        0, 0, 1080, 720,
+        0, 0, 1280, 720,
         NULL, NULL, hInstance, NULL
     );
 
