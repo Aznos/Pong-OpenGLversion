@@ -14,4 +14,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     HGLRC hrc;
     MSG msg;
     BOOL bQuit = FALSE;
+
+    wc.style = CS_OWNDC;
+    wc.lpfnWndProc = WindowProcedure;
+    wc.cbClsExtra = 0;
+    wc.cbWndExtra = 0;
+    wc.hInstance = hInstance;
+    wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    wc.lpszMenuName = NULL;
+    wc.lpszClassName = "GLSample";
+    RegisterClass(&wc);
 }
