@@ -87,3 +87,9 @@ void EnableOpenGL(HWND hwnd, HDC* hdc, HGLRC* hrc) {
     *hrc = wglCreateContext(*hdc);
     wglMakeCurrent(*hdc, *hrc);
 }
+
+void DisableOpenGL(HWND hwnd, HDC hdc, HGLRC hrc) {
+    wglMakeCurrent(NULL, NULL);
+    wglDeleteContext(hrc);
+    ReleaseDC(hwnd, hdc);
+}
