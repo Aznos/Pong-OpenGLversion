@@ -53,3 +53,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     DestroyWindow(hwnd);
     return msg.wParam;
 }
+
+LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lparam) {
+    switch(message) {
+        case WM_CLOSE:
+            PostQuitMessage(0);
+            break;
+
+        default:
+            return DefWindowProc(hwnd, message, wParam, lparam);
+    }
+
+    return 0;
+}
