@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-I src/inc
-LDFLAGS=-L src/lib -lOpenGL32
+LDFLAGS=-L src/lib -lOpenGL32 -lgdi32 -luser32
 SRC_DIR=./src
 OBJ_DIR=./bin
 EXE_DIR=./bin
