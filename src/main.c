@@ -7,6 +7,21 @@ LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 void EnableOpenGL(HWND hwnd, HDC*, HGLRC*);
 void DisableOpenGL(HWND, HDC, HGLRC);
 
+void drawCircle(float centerX, float centerY, float radius, int numSegments) {
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glVertex2f(centerX, centerY);
+
+    for(int i = 0; i <= numSegments; i++) {
+        float theta = 2.0f * 3.1415926f * (float) i / (float) numSegments;
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(x + centerX, y + centerY);
+    }
+
+    glEnd();
+}
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     WNDCLASS wc;
     HWND hwnd;
