@@ -70,26 +70,30 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
+            float edgeOffset = 0.04f;
             if(aspectRatio > 1.0f) {
                 glOrtho(-1.0 * aspectRatio, 1.0 * aspectRatio, -1.0, 1.0, -1.0, 1.0);
             } else {
                 glOrtho(-1.0, 1.0, -1.0 / aspectRatio, 1.0 / aspectRatio, -1.0, 1.0);
             }
 
+            float paddleWidth = 0.04f;
+            float paddleHeight = 0.2f;
+
             glBegin(GL_QUADS);
                 glColor3f(1.0f, 1.0f, 1.0f);
-                glVertex2f(-0.92f, 0.2f);
-                glVertex2f(-0.88f, 0.2f);
-                glVertex2f(-0.88f, -0.2f);
-                glVertex2f(-0.92f, -0.2f);
+                glVertex2f(-1.0f * aspectRatio + edgeOffset, paddleHeight);
+                glVertex2f(-1.0f * aspectRatio + edgeOffset + paddleWidth, paddleHeight);
+                glVertex2f(-1.0f * aspectRatio + edgeOffset + paddleWidth, -paddleHeight);
+                glVertex2f(-1.0f * aspectRatio + edgeOffset, -paddleHeight);
             glEnd();
 
             glBegin(GL_QUADS);
                 glColor3f(1.0f, 1.0f, 1.0f);
-                glVertex2f(0.88f, 0.2f);
-                glVertex2f(0.92f, 0.2f);
-                glVertex2f(0.92f, -0.2f);
-                glVertex2f(0.88f, -0.2f);
+                glVertex2f(1.0f * aspectRatio - edgeOffset - paddleWidth, paddleHeight);
+                glVertex2f(1.0f * aspectRatio - edgeOffset, paddleHeight);
+                glVertex2f(1.0f * aspectRatio - edgeOffset, -paddleHeight);
+                glVertex2f(1.0f * aspectRatio - edgeOffset - paddleWidth, -paddleHeight);
             glEnd();
 
             drawCircle(0.0f, 0.0f, 0.05f, 32);
