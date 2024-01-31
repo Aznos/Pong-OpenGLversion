@@ -54,18 +54,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
             glBegin(GL_QUADS);
                 glColor3f(1.0f, 1.0f, 1.0f);
-                glVertex2f(-0.9f, 0.3f);
-                glVertex2f(-0.85f, 0.3f);
-                glVertex2f(-0.85f, -0.3f);
-                glVertex2f(-0.9f, -0.3f);
+                glVertex2f(-0.92f, 0.2f);
+                glVertex2f(-0.88f, 0.2f);
+                glVertex2f(-0.88f, -0.2f);
+                glVertex2f(-0.92f, -0.2f);
             glEnd();
 
             glBegin(GL_QUADS);
                 glColor3f(1.0f, 1.0f, 1.0f);
-                glVertex2f(0.85f, 0.3f);
-                glVertex2f(0.9f, 0.3f);
-                glVertex2f(0.9f, -0.3f);
-                glVertex2f(0.85f, -0.3f);
+                glVertex2f(0.88f, 0.2f);
+                glVertex2f(0.92f, 0.2f);
+                glVertex2f(0.92f, -0.2f);
+                glVertex2f(0.88f, -0.2f);
             glEnd();
 
             SwapBuffers(hdc);
